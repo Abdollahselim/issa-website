@@ -4,7 +4,7 @@ import { LanguageProvider } from "@/lib/language-context";
 import { ClientBody } from "./client-body";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://example.com"), // placeholder — replace with the real production domain
+  metadataBase: new URL("https://issaselim.vercel.app"), // placeholder — replace with the real production domain
   title: "عيسى سليم | Growth & Performance Marketing",
   description:
     "أساعد الشركات على زيادة العملاء والمبيعات من خلال إدارة الحملات الإعلانية، تحسين معدل التحويل (CRO)، وتحليل البيانات.",

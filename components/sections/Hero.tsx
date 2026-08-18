@@ -10,7 +10,7 @@ export default function Hero() {
   const isArabic = language === "ar";
 
   return (
-    <section
+    <section id="hero"
       dir={isArabic ? "rtl" : "ltr"}
       className="relative min-h-[100svh] w-full overflow-hidden pt-[58px]"
     >

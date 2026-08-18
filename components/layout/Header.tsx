@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useLanguage } from "@/lib/language-context";
 import SocialLinks from "@/components/ui/SocialLinks";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
@@ -9,87 +10,99 @@ export default function Header() {
 
   const isArabic = language === "ar";
 
+  const [isScrolled, setIsScrolled] = useState(false);
+
+useEffect(() => {
+  const hero = document.getElementById("hero");
+
+  if (!hero) return;
+
+  const handleScroll = () => {
+    setIsScrolled(window.scrollY >= hero.offsetHeight);
+  };
+
+  handleScroll();
+
+  window.addEventListener("scroll", handleScroll, { passive: true });
+
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+  };
+}, []);
+
   return (
     <header
-      dir={language === "ar" ? "rtl" : "ltr"}
-      className="fixed inset-x-0 top-0 z-50 border-b border-white"
+      dir={isArabic ? "rtl" : "ltr"}
+      className={[
+  "fixed inset-x-0 top-0 z-50 border-b border-white",
+  "transition-[background-color,backdrop-filter] duration-300 ease-out",
+  isScrolled
+    ? "bg-white/[0.06] backdrop-blur-md"
+    : "bg-transparent backdrop-blur-0",
+].join(" ")}
     >
-      <div className="mx-auto flex h-[60px] sm:h-[68px] w-full max-w-[1280px] items-center justify-between px-3 sm:px-5 lg:px-6 gap-2 sm:gap-3">
-        {/* WhatsApp CTA */}
+      <div
+        className={[
+          "mx-auto flex w-full max-w-[1280px] items-center justify-between",
+          "h-[clamp(3.75rem,5.3vw,4.25rem)]",
+          "gap-[clamp(0.5rem,1vw,0.75rem)]",
+          "px-[clamp(0.75rem,2vw,1.5rem)]",
+        ].join(" ")}
+      >
         <WhatsAppButton
           label={t.header.ctaWhatsApp}
           variant="compact"
           className={[
-            // المقاسات الأساسية
-            "h-[36px] sm:h-[40px]",
-            "min-w-[100px] sm:min-w-[120px]",
-            "px-2.5 sm:px-4 py-1 sm:py-1.5",
-            
-            // حجم الخط متجاوب - أكبر للعربي
-            isArabic 
-              ? "text-[18px] sm:text-[20px] lg:text-[23px]"
-              : "text-[16px] sm:text-[18px] lg:text-[21px]",
-            
-            // التصميم
+            "h-[clamp(2.25rem,3.2vw,2.5rem)]",
+            "min-w-[clamp(6.25rem,10vw,7.5rem)]",
+            "px-[clamp(0.625rem,1.25vw,1rem)]",
+            "py-[clamp(0.25rem,0.5vw,0.375rem)]",
+            isArabic
+              ? "text-[clamp(1.125rem,1.8vw,1.4375rem)]"
+              : "text-[clamp(1rem,1.65vw,1.3125rem)]",
             "border border-white",
             "bg-gradient-to-r from-[#fea876a6] via-[#e78d59] to-[#be3838]",
             "font-bold text-white",
             "shadow-[0_4px_18px_rgba(255,255,255,0.18)]",
             "backdrop-blur-md",
-            "hover:scale-100",
-            
-            // منع اختصار النص
             "whitespace-nowrap",
             "justify-center",
           ].join(" ")}
         />
 
-        {/* Social links - ظاهرة دائماً وجانب بعض */}
         <SocialLinks
           className={[
-            "flex items-center justify-center gap-3 sm:gap-4 lg:gap-5",
-            "flex-shrink-0",
+            "flex shrink-0 items-center justify-center",
+            "gap-[clamp(0.75rem,1.6vw,1.25rem)]",
           ].join(" ")}
-          iconClassName="h-[20px] w-[20px] sm:h-[24px] sm:w-[24px] lg:h-[28px] lg:w-[28px]"
+          iconClassName="h-[clamp(1.25rem,2.2vw,1.75rem)] w-[clamp(1.25rem,2.2vw,1.75rem)]"
         />
 
-        {/* Language switcher */}
         <button
           type="button"
           onClick={toggleLanguage}
-          aria-label={
-            isArabic
-              ? "Switch to English"
-              : "التبديل إلى العربية"
-          }
+          aria-label={isArabic ? "Switch to English" : "التبديل إلى العربية"}
           className={[
-            "flex items-center overflow-hidden rounded-full",
-
+            "flex shrink-0 items-center overflow-hidden rounded-full",
             "font-english",
-            
-            // مقاسات أكبر
-            "h-[32px] w-[70px] sm:h-[38px] sm:w-[80px] lg:h-[42px] lg:w-[88px]",
-            "text-[16px] sm:text-[19px] lg:text-[21px]",
-            
-            // التصميم
+            "h-[clamp(2rem,3.2vw,2.625rem)]",
+            "w-[clamp(4.375rem,6.5vw,5.5rem)]",
+            "text-[clamp(1rem,1.55vw,1.3125rem)]",
             "border border-black",
             "bg-black/85",
-            "'p-[1px]",
+            "p-px",
             "font-bold leading-none",
-            "flex-shrink-0",
-            
-            // تأثير hover
-            "hover:bg-black/95 transition-colors duration-200",
+            "transition-colors duration-200",
+            "hover:bg-black/95",
+            "focus-visible:outline focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2",
           ].join(" ")}
         >
           <span
             className={[
               "flex h-full flex-1 items-center justify-center rounded-full",
-              "transition-all duration-200 ease-out",
               "font-english",
-              language === "ar"
-                ? "bg-white/85 text-black"
-                : "text-white",
+              "transition-all duration-200 ease-out",
+              isArabic ? "bg-white/85 text-black" : "text-white",
             ].join(" ")}
           >
             Ar
@@ -98,11 +111,9 @@ export default function Header() {
           <span
             className={[
               "flex h-full flex-1 items-center justify-center rounded-full",
-              "transition-all duration-200 ease-out",
               "font-english",
-              language === "en"
-                ? "bg-white/85 text-black"
-                : "text-white",
+              "transition-all duration-200 ease-out",
+              !isArabic ? "bg-white/85 text-black" : "text-white",
             ].join(" ")}
           >
             En

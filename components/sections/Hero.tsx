@@ -25,11 +25,11 @@ export default function Hero() {
 
           // Desktop position
           isArabic
-            ? "md:left-0 md:right-auto"
-            : "md:left-auto md:right-0",
+            ? "lg:left-0 lg:right-auto"
+            : "lg:left-auto lg:right-0",
 
-          "md:h-[calc(100svh-58px)]",
-          "md:w-[55%]",
+          "lg:h-[calc(100svh-58px)]",
+          "lg:w-[55%]",
         ].join(" ")}
       >
         <div
@@ -40,8 +40,8 @@ export default function Hero() {
             max-w-none
             animate-fade-scale
 
-            md:h-full
-            md:w-[115%]
+            lg:h-full
+            lg:w-[115%]
           "
         >
           <Image
@@ -49,13 +49,13 @@ export default function Hero() {
             alt="عيسى سليم"
             fill
             priority
-            sizes="(max-width: 767px) 145vw, 60vw"
+            sizes="(max-width: 1023px) 145vw, 60vw"
             className="
               object-cover
               object-center
 
-              md:object-contain
-              md:object-bottom
+              lg:object-contain
+              lg:object-bottom
             "
           />
         </div>
@@ -69,13 +69,13 @@ export default function Hero() {
           "absolute inset-x-0 z-[9] px-4",
           isArabic ? "top-[20%]" : "top-[33%]",
 
-          "md:inset-x-auto",
-          "md:w-[38%]",
-          "md:px-0",
+          "lg:inset-x-auto",
+          "lg:w-[38%]",
+          "lg:px-0",
 
           isArabic
-            ? "md:right-[7%] md:left-auto md:top-[18%]"
-            : "md:left-[7%] md:right-auto md:top-[17%]",
+            ? "lg:right-[7%] lg:left-auto lg:top-[18%]"
+            : "lg:left-[7%] lg:right-auto lg:top-[17%]",
         ].join(" ")}
       >
         <h2
@@ -83,15 +83,15 @@ export default function Hero() {
             "animate-fade-up font-black leading-[0.85] text-white",
             "[animation-delay:120ms]",
 
-            // Mobile — unchanged
+            // Mobile + Tablet — unchanged
             isArabic
               ? "text-right text-[18vw] tracking-[-0.04em]"
               : "text-left text-[15.6vw] tracking-[-0.035em]",
 
             // Desktop
-            "md:text-[clamp(3.2rem,5vw,4.8rem)]",
-            "md:leading-[0.95]",
-            isArabic ? "md:text-right" : "md:text-left",
+            "lg:text-[clamp(3.2rem,5vw,4.8rem)]",
+            "lg:leading-[0.95]",
+            isArabic ? "lg:text-right" : "lg:text-left",
           ].join(" ")}
         >
           {t.hero.experienceLabel}
@@ -106,13 +106,13 @@ export default function Hero() {
           "absolute inset-x-0 z-[9] px-4",
           isArabic ? "top-[33%]" : "top-[41%]",
 
-          "md:inset-x-auto",
-          "md:w-[38%]",
-          "md:px-0",
+          "lg:inset-x-auto",
+          "lg:w-[38%]",
+          "lg:px-0",
 
           isArabic
-            ? "md:right-[7%] md:left-auto md:top-[27%]"
-            : "md:left-[7%] md:right-auto md:top-[27%]",
+            ? "lg:right-[7%] lg:left-auto lg:top-[27%]"
+            : "lg:left-[7%] lg:right-auto lg:top-[27%]",
         ].join(" ")}
       >
         <h2
@@ -120,25 +120,25 @@ export default function Hero() {
             "animate-fade-up whitespace-nowrap font-black leading-[0.95] text-white",
             "[animation-delay:160ms]",
 
-            // Mobile — unchanged
+            // Mobile + Tablet — unchanged
             isArabic
               ? "text-right text-[16.5vw] tracking-[-0.08em]"
               : "text-right text-[9.5vw] tracking-[-0.08em]",
 
             // Desktop
-            "md:text-[clamp(3rem,4.6vw,4.5rem)]",
-            "md:leading-[0.95]",
-            "md:tracking-[-0.035em]",
-            isArabic ? "md:text-right" : "md:text-left",
+            "lg:text-[clamp(3rem,4.6vw,4.5rem)]",
+            "lg:leading-[0.95]",
+            "lg:tracking-[-0.035em]",
+            isArabic ? "lg:text-right" : "lg:text-left",
           ].join(" ")}
         >
           {t.hero.experienceValue}
         </h2>
       </div>
 
-      {/* {/* =========================================================
-    HERO ABOUT
-=========================================================   */}
+      {/* =========================================================
+          HERO ABOUT
+      ========================================================= */}
       <HeroAbout />
 
       {/* =========================================================
@@ -149,14 +149,14 @@ export default function Hero() {
       <div
         className={[
           "hidden",
-          "md:absolute",
-          "md:z-30",
-          "md:block",
-          "md:w-[28%]",
+          "lg:absolute",
+          "lg:z-30",
+          "lg:block",
+          "lg:w-[28%]",
 
           isArabic
-            ? "md:right-[8%] md:left-auto md:top-[63%]"
-            : "md:left-[8%] md:right-auto md:top-[65%]",
+            ? "lg:right-[8%] lg:left-auto lg:top-[63%]"
+            : "lg:left-[8%] lg:right-auto lg:top-[65%]",
         ].join(" ")}
       >
         <HeroMetrics />
@@ -165,7 +165,7 @@ export default function Hero() {
       {/* =========================================================
           BOTTOM BLACK GRADIENT
 
-          Mobile → unchanged
+          Mobile + Tablet → unchanged
           Desktop → same
       ========================================================= */}
       <div
@@ -176,20 +176,20 @@ export default function Hero() {
           inset-x-0
           bottom-0
           z-20
-          h-[40%]
+          h-[45%]
           bg-gradient-to-b
           from-black/0
-          via-black/80
+          via-black/90
           to-black
 
-          md:h-[35%]
+          lg:h-[35%]
         "
       />
 
       {/* =========================================================
           GREETING
 
-          Mobile → unchanged
+          Mobile + Tablet → unchanged
           Desktop → centered
       ========================================================= */}
       <div
@@ -205,8 +205,8 @@ export default function Hero() {
           px-4
           pb-[3vh]
 
-          md:min-h-0
-          md:pb-[2.5vh]
+          lg:min-h-0
+          lg:pb-[2.5vh]
         "
       >
         <h1
@@ -220,7 +220,7 @@ export default function Hero() {
             text-white
             [animation-delay:220ms]
 
-            md:text-[clamp(4rem,7vw,7rem)]
+            lg:text-[clamp(4rem,7vw,7rem)]
           "
         >
           {t.hero.greeting}

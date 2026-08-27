@@ -11,14 +11,14 @@ export default function HeroAbout() {
     <div
       className={[
         "hidden",
-        "md:absolute",
-        "md:top-[37%]",
-        "md:z-30",
-        "md:block",
-        "md:w-[39%]",
+        "lg:absolute",
+        "lg:top-[37%]",
+        "lg:z-30",
+        "lg:block",
+        "lg:w-[39%]",
         isArabic
-          ? "md:right-[7%] md:left-auto"
-          : "md:left-[7%] md:right-auto",
+          ? "lg:right-[7%] lg:left-auto"
+          : "lg:left-[7%] lg:right-auto",
       ].join(" ")}
     >
       <div

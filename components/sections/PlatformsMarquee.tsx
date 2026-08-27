@@ -7,21 +7,13 @@ import {
   useRef,
   useState,
 } from "react";
-import { useLanguage } from "@/lib/language-context";
 import { platforms } from "@/data/platforms";
 
-interface PlatformsMarqueeProps {
-  showHeading?: boolean;
-}
 
 const MARQUEE_COPIES = 6;
 const SPEED = 48; // pixels per second
 
-export default function PlatformsMarquee({
-  showHeading = true,
-}: PlatformsMarqueeProps) {
-  const { t } = useLanguage();
-
+export default function PlatformsMarquee() {
   const trackRef = useRef<HTMLDivElement>(null);
   const groupRef = useRef<HTMLDivElement>(null);
 
@@ -34,14 +26,6 @@ export default function PlatformsMarquee({
 
   /**
    * Measure the exact width of ONE complete platform group.
-   *
-   * The track contains identical groups:
-   *
-   * [GROUP][GROUP][GROUP][GROUP]...
-   *
-   * We move exactly one group's width and then wrap back
-   * by that same amount. Because the next group is identical,
-   * the reset is visually invisible.
    */
   const measureGroup = useCallback(() => {
     if (!groupRef.current) return;
@@ -114,9 +98,6 @@ export default function PlatformsMarquee({
 
         /**
          * Move exactly one group width.
-         *
-         * Because the next group is identical to the first one,
-         * this wrap is invisible to the user.
          */
         if (positionRef.current <= -groupWidth) {
           positionRef.current += groupWidth;
@@ -152,12 +133,8 @@ export default function PlatformsMarquee({
         flex
         shrink-0
         items-center
-        gap-10
-        pr-10
-        sm:gap-14
-        sm:pr-14
-        md:gap-18
-        md:pr-18
+        gap-[clamp(3rem,7vw,8rem)]
+        pr-[clamp(3rem,7vw,8rem)]
       "
       aria-hidden={groupIndex !== 0}
     >
@@ -166,8 +143,8 @@ export default function PlatformsMarquee({
           key={`${groupIndex}-${platform.slug}`}
           className="
             relative
-            h-20
-            w-20
+            h-[clamp(6rem,12vw,12rem)]
+            w-[clamp(6rem,12vw,12rem)]
             shrink-0
             opacity-70
             grayscale
@@ -176,10 +153,6 @@ export default function PlatformsMarquee({
             hover:scale-110
             hover:opacity-100
             hover:grayscale-0
-            sm:h-24
-            sm:w-24
-            md:h-28
-            md:w-28
           "
         >
           <Image
@@ -187,9 +160,8 @@ export default function PlatformsMarquee({
             alt={groupIndex === 0 ? platform.name : ""}
             fill
             sizes="
-              (max-width: 639px) 80px,
-              (max-width: 767px) 96px,
-              112px
+              (max-width: 1023px) 96px,
+              192px
             "
             className="object-contain"
           />
@@ -200,41 +172,14 @@ export default function PlatformsMarquee({
 
   return (
     <section
-      aria-label={t.platforms.heading}
+      aria-label="Platforms"
       className="
         relative
         overflow-hidden
-        bg-gradient-to-b
-        from-black
-        from-100%
-        via-black
-        via-[100%]
-        to-transparent
-        to-100%
-        py-8
-        sm:py-10
-        md:py-19
+        bg-black
+        py-[clamp(3rem,7vw,6rem)]
       "
     >
-      {/* Heading */}
-      {showHeading && (
-        <h2
-          className="
-            mb-6
-            px-5
-            text-center
-            text-lg
-            font-extrabold
-            text-text-primary
-            sm:mb-8
-            sm:text-xl
-            md:text-2xl
-          "
-        >
-          {t.platforms.heading}
-        </h2>
-      )}
-
       {/* Marquee viewport */}
       <div
         dir="ltr"
@@ -251,12 +196,10 @@ export default function PlatformsMarquee({
             inset-y-0
             left-0
             z-10
-            w-20
+            w-[clamp(6rem,15vw,16rem)]
             bg-gradient-to-r
             from-black
             to-transparent
-            sm:w-32
-            md:w-40
           "
         />
 
@@ -269,12 +212,10 @@ export default function PlatformsMarquee({
             inset-y-0
             right-0
             z-10
-            w-20
+            w-[clamp(6rem,15vw,16rem)]
             bg-gradient-to-l
             from-black
             to-transparent
-            sm:w-32
-            md:w-40
           "
         />
 

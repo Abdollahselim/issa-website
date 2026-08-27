@@ -12,11 +12,11 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative px-5 pb-8 pt-10 sm:px-10 sm:py-20"
+      className="relative bg-black px-5 pb-8 pt-10 sm:px-10 sm:py-20"
     >
       <div
         className={[
-          "mx-auto w-full max-w-[390px]",
+          "mx-auto w-full max-w-[560px]",
           "text-white",
           isArabic ? "text-right" : "text-left",
         ].join(" ")}
@@ -29,62 +29,20 @@ export default function About() {
             font-medium
             leading-[2.2]
             text-white
-            sm:text-2xl
+            sm:text-3xl
             sm:leading-relaxed
           "
         >
           {t.about.intro}
         </p>
 
-        {/* About points — desktop/tablet only for now */}
-        <ul
-          className={[
-            "mt-7 hidden flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-6 md:flex",
-            isArabic ? "items-end" : "items-start",
-          ].join(" ")}
-        >
-          {t.about.points.map((point, index) => (
-            <li
-              key={point}
-              className="
-                flex
-                animate-fade-up
-                items-center
-                gap-2
-                text-sm
-                font-semibold
-                text-white/75
-                sm:text-base
-              "
-              style={{ animationDelay: `${index * 90}ms` }}
-            >
-              <span
-                aria-hidden="true"
-                className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#ef5a35]"
-              />
-
-              <span>{point}</span>
-            </li>
-          ))}
-        </ul>
-
         {/* Social */}
-        <div
-          className={[
-            "mt-[-1.8rem] flex animate-fade-up items-center gap-2",
-            isArabic ? "justify-end" : "justify-end",
-          ].join(" ")}
-        >
-          <SocialLinks iconClassName="h-[20px] w-[20px]" />
+        <div className="mt-[-1.8rem] flex animate-fade-up items-center justify-end">
+          <SocialLinks iconClassName="h-[22px] w-[22px]" />
         </div>
 
         {/* CTAs */}
-        <div
-          className={[
-            "mt-10 flex items-center gap-5",
-            isArabic ? "justify-center" : "justify-center",
-          ].join(" ")}
-        >
+        <div className="mt-10 flex items-center justify-center gap-5">
           {/* Case Studies */}
           <a
             href="#case-studies"

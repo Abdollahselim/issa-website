@@ -5,7 +5,6 @@ import About from "@/components/sections/About";
 import Services from "@/components/sections/Services";
 import CaseStudies from "@/components/sections/CaseStudies";
 import PlatformsMarquee from "@/components/sections/PlatformsMarquee";
-import StaticPlatforms from "@/components/sections/StaticPlatforms";
 import Industries from "@/components/sections/Industries";
 import CTA from "@/components/sections/CTA";
 
@@ -18,18 +17,15 @@ export default function Home() {
         {/* Hero — all devices */}
         <Hero />
 
-        {/* About + Static Platforms — Mobile only */}
-        <div className="md:hidden">
-          <div className="bg-gradient-to-b from-black from-0% via-black via-[80%] to-transparent to-100%">
+        {/* About — Mobile + Tablet only */}
+        <div className="lg:hidden">
+          <div>
             <About />
-            <StaticPlatforms />
           </div>
         </div>
 
-        {/* Platform Marquee — Desktop / Tablet only */}
-        <div className="hidden md:block">
-          <PlatformsMarquee showHeading={false} />
-        </div>
+        {/* Platform Marquee — All devices */}
+        <PlatformsMarquee />
 
         {/* Common Sections */}
         <Industries />
@@ -37,9 +33,6 @@ export default function Home() {
         <Services />
 
         <CaseStudies />
-
-        {/* Platform Marquee — All devices */}
-        <PlatformsMarquee />
 
         <CTA />
       </main>

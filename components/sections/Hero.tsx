@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useLanguage } from "@/lib/language-context";
 import HeroMetrics from "@/components/sections/HeroMetrics";
+import HeroAbout from "@/components/layout/HeroAbout";
 
 export default function Hero() {
   const { language, t } = useLanguage();
@@ -19,7 +20,7 @@ export default function Hero() {
       ========================================================= */}
       <div
         className={[
-          "pointer-events-none absolute 'top-[72px]' z-10 flex justify-center",
+          "pointer-events-none absolute z-10 flex justify-center",
           "inset-x-0",
 
           // Desktop position
@@ -27,7 +28,6 @@ export default function Hero() {
             ? "md:left-0 md:right-auto"
             : "md:left-auto md:right-0",
 
-          "md:top-[58px]",
           "md:h-[calc(100svh-58px)]",
           "md:w-[55%]",
         ].join(" ")}
@@ -74,8 +74,8 @@ export default function Hero() {
           "md:px-0",
 
           isArabic
-            ? "md:right-[7%] md:left-auto md:top-[16%]"
-            : "md:left-[7%] md:right-auto md:top-[16%]",
+            ? "md:right-[7%] md:left-auto md:top-[18%]"
+            : "md:left-[7%] md:right-auto md:top-[17%]",
         ].join(" ")}
       >
         <h2
@@ -104,20 +104,20 @@ export default function Hero() {
       <div
         className={[
           "absolute inset-x-0 z-[9] px-4",
-          isArabic ? "top-[33%]" : "top-[40.5%]",
+          isArabic ? "top-[33%]" : "top-[41%]",
 
           "md:inset-x-auto",
           "md:w-[38%]",
           "md:px-0",
 
           isArabic
-            ? "md:right-[7%] md:left-auto md:top-[25%]"
-            : "md:left-[7%] md:right-auto md:top-[25%]",
+            ? "md:right-[7%] md:left-auto md:top-[27%]"
+            : "md:left-[7%] md:right-auto md:top-[27%]",
         ].join(" ")}
       >
         <h2
           className={[
-            "animate-fade-up whitespace-nowrap font-black leading-[0.85] text-white",
+            "animate-fade-up whitespace-nowrap font-black leading-[0.95] text-white",
             "[animation-delay:160ms]",
 
             // Mobile — unchanged
@@ -136,49 +136,10 @@ export default function Hero() {
         </h2>
       </div>
 
-      {/* =========================================================
-    DESKTOP ABOUT / INTRO
-      ========================================================= */}
-<div
-  className={[
-    "hidden",
-    "md:absolute",
-    "md:top-[35%]",
-    "md:z-30",
-    "md:block",
-    "md:w-[38%]",
-    "lg:w-[36%]",
-    "xl:w-[34%]",
-    "2xl:w-[32%]",
-
-    isArabic
-      ? "md:right-[7%] md:left-auto"
-      : "md:left-[7%] md:right-auto",
-  ].join(" ")}
->
-  <p
-    className={[
-      "animate-fade-up",
-      "font-medium",
-      
-      // تعديل ارتفاع السطر ليتناسب مع 4 أسطر
-      "leading-[1.7]",
-      "text-white",
-      "[animation-delay:200ms]",
-
-      // حجم خط مناسب يجعل النص يظهر في 4 أسطر تقريباً
-      "text-[clamp(1.15rem,1.35vw,1.35rem)]",
-
-      // توزيع النص بشكل متساوي
-      "text-justify",
-      "break-words",
-
-      isArabic ? "text-right" : "text-left",
-    ].join(" ")}
-  >
-    {t.hero.intro}
-  </p>
-</div>
+      {/* {/* =========================================================
+    HERO ABOUT
+=========================================================   */}
+      <HeroAbout />
 
       {/* =========================================================
           HERO METRICS
@@ -194,8 +155,8 @@ export default function Hero() {
           "md:w-[28%]",
 
           isArabic
-            ? "md:right-[5%] md:left-auto md:top-[62%]"
-            : "md:left-[5%] md:right-auto md:top-[64%]",
+            ? "md:right-[8%] md:left-auto md:top-[63%]"
+            : "md:left-[8%] md:right-auto md:top-[65%]",
         ].join(" ")}
       >
         <HeroMetrics />

@@ -39,37 +39,68 @@ export default function HeroMetrics() {
   return (
     <div
       dir={isArabic ? "rtl" : "ltr"}
-      className="grid grid-cols-3 items-start gap-3 text-center"
+      className="grid grid-cols-3 items-start gap-1 sm:gap-4 md:gap-6 text-center w-full max-w-xl mx-auto px-1 sm:px-0"
     >
       {heroMetrics.map(({ label, value, icon: Icon }) => (
         <div
           key={`${label}-${value}`}
           className="flex min-w-0 flex-col items-center text-white"
         >
+          {/* دائرة الأيقونة متجاوبة */}
           <div
             className="
-              mb-2
-              flex h-12 w-12 items-center justify-center
+              mb-1.5 sm:mb-2.5
+              flex 
+              h-[clamp(2.5rem,6vw,3.25rem)] 
+              w-[clamp(2.5rem,6vw,3.25rem)] 
+              items-center justify-center
               rounded-full
               border border-white/40
               bg-white/[0.12]
               shadow-[inset_0_1px_1px_rgba(255,255,255,0.5),inset_0_-1px_2px_rgba(0,0,0,0.2),0_8px_24px_rgba(0,0,0,0.18)]
               backdrop-blur-md
               backdrop-saturate-150
+              shrink-0
             "
           >
+            {/* حجم الأيقونة متجاوب */}
             <Icon
-              className="h-[30px] w-[30px] drop-shadow-[0_2px_4px_rgba(0,0,0,0.25)]"
+              className="
+                h-[clamp(1.25rem,3.2vw,1.75rem)] 
+                w-[clamp(1.25rem,3.2vw,1.75rem)] 
+                drop-shadow-[0_2px_4px_rgba(0,0,0,0.25)]
+              "
               strokeWidth={1.5}
               aria-hidden="true"
             />
           </div>
 
-          <span className="text-[16px] font-bold leading-tight">
+          {/* العنوان الرئيسي: حجم متجاوب ومتناسب مع العربي والإنجليزي */}
+          <span 
+            className="
+              text-[clamp(0.8125rem,2vw,1.0625rem)] 
+              font-bold 
+              leading-snug 
+              tracking-tight 
+              w-full 
+              truncate sm:whitespace-normal
+            "
+          >
             {label}
           </span>
 
-          <span className="mt-0.5 text-[14px] font-medium leading-tight text-white/90">
+          {/* النص الفرعي: حجم متجاوب يدعم الأسطر المزدوجة بمرونة */}
+          <span 
+            className="
+              mt-0.5 
+              text-[clamp(0.7rem,1.75vw,0.875rem)] 
+              font-medium 
+              leading-tight 
+              text-white/90 
+              w-full 
+              break-words
+            "
+          >
             {value}
           </span>
         </div>

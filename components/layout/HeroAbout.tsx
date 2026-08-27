@@ -1,28 +1,48 @@
 "use client";
 
 import { useLanguage } from "@/lib/language-context";
-import Hero from "@/components/sections/Hero";
-import About from "@/components/sections/About";
 
 export default function HeroAbout() {
-  const { language } = useLanguage();
+  const { t, language } = useLanguage();
 
   const isArabic = language === "ar";
 
   return (
     <div
       className={[
-        "hidden md:grid",
-        "md:min-h-[100svh]",
-        "md:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)]",
-        "md:items-stretch",
+        "hidden",
+        "md:absolute",
+        "md:top-[37%]",
+        "md:z-30",
+        "md:block",
+        "md:w-[39%]",
         isArabic
-          ? "md:[&>section:first-child]:order-1 md:[&>section:last-child]:order-2"
-          : "md:[&>section:first-child]:order-2 md:[&>section:last-child]:order-1",
+          ? "md:right-[7%] md:left-auto"
+          : "md:left-[7%] md:right-auto",
       ].join(" ")}
     >
-      <Hero />
-      <About />
+      <div
+        className={[
+          "flex flex-col",
+          "gap-[clamp(0.5rem,0.8vw,1rem)]",
+          "text-white",
+          isArabic ? "items-end text-right" : "items-start text-left",
+        ].join(" ")}
+      >
+        {/* Intro */}
+        <p
+          className={[
+            "w-full animate-fade-up",
+            "text-[clamp(1.5rem,1.5vw,1.75rem)]",
+            "font-medium",
+            "leading-[1.65]",
+            "text-white",
+            "[animation-delay:200ms]",
+          ].join(" ")}
+        >
+          {t.hero.intro}
+        </p>
+      </div>
     </div>
   );
 }

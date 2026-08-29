@@ -6,6 +6,7 @@ import Services from "@/components/sections/Services";
 import CaseStudies from "@/components/sections/CaseStudies";
 import PlatformsMarquee from "@/components/sections/PlatformsMarquee";
 import Industries from "@/components/sections/Industries";
+import HeroMetrics from "@/components/sections/HeroMetrics";
 import CTA from "@/components/sections/CTA";
 
 export default function Home() {
@@ -19,9 +20,7 @@ export default function Home() {
 
         {/* About — Mobile + Tablet only */}
         <div className="lg:hidden">
-          <div>
-            <About />
-          </div>
+          <About />
         </div>
 
         {/* Platform Marquee — All devices */}
@@ -29,7 +28,12 @@ export default function Home() {
 
         {/* Common Sections */}
         <Industries />
-        
+
+        {/* HeroMetrics — Mobile + Tablet only (Desktop inside Hero) */}
+        <div className="mt-10 lg:hidden">
+          <HeroMetrics />
+        </div>
+
         <Services />
 
         <CaseStudies />

@@ -6,17 +6,16 @@ import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
 export default function About() {
   const { t, language } = useLanguage();
-
   const isArabic = language === "ar";
 
   return (
     <section
       id="about"
-      className="relative bg-black px-5 pb-8 pt-10 sm:px-10 sm:py-20"
+      className="relative bg-black px-5 pb-8 pt-10 sm:px-10 sm:py-16"
     >
       <div
         className={[
-          "mx-auto w-full max-w-[560px]",
+          "mx-auto w-full max-w-[390px] sm:max-w-[560px]",
           "text-white",
           isArabic ? "text-right" : "text-left",
         ].join(" ")}
@@ -25,12 +24,10 @@ export default function About() {
         <p
           className="
             animate-fade-up
-            text-[clamp(1rem,4.5vw,1.1rem)]
+            text-[clamp(1rem,4.5vw,1.75rem)]
             font-medium
             leading-[2.2]
             text-white
-            sm:text-3xl
-            sm:leading-relaxed
           "
         >
           {t.about.intro}
@@ -38,7 +35,7 @@ export default function About() {
 
         {/* Social */}
         <div className="mt-[-1.8rem] flex animate-fade-up items-center justify-end">
-          <SocialLinks iconClassName="h-[22px] w-[22px]" />
+          <SocialLinks iconClassName="h-[clamp(1.25rem,2vw,1.5rem)] w-[clamp(1.25rem,2vw,1.5rem)]" />
         </div>
 
         {/* CTAs */}
@@ -48,8 +45,8 @@ export default function About() {
             href="#case-studies"
             className="
               inline-flex
-              h-[38px]
-              min-w-[140px]
+              h-[clamp(2.375rem,4vw,2.75rem)]
+              min-w-[clamp(8.75rem,12vw,10rem)]
               items-center
               justify-center
               rounded-full
@@ -57,7 +54,7 @@ export default function About() {
               border-white/100
               bg-white/20
               px-5
-              text-[14px]
+              text-[clamp(1rem,1.5vw,1.25rem)]
               font-bold
               text-white
               shadow-[0_6px_20px_rgba(0,0,0,0.18)]
@@ -76,8 +73,8 @@ export default function About() {
             label={t.about.ctaPrimary}
             variant="compact"
             className="
-              h-[38px]
-              min-w-[140px]
+              h-[clamp(2.375rem,4vw,2.75rem)]
+              min-w-[clamp(8.75rem,12vw,10rem)]
               justify-center
               border
               border-white/100
@@ -87,7 +84,7 @@ export default function About() {
               to-[#ef5a35]/90
               px-5
               py-1.5
-              text-[14px]
+              text-[clamp(1rem,1.5vw,1.25rem)]
               font-bold
               text-white
               shadow-[0_6px_20px_rgba(0,0,0,0.18)]

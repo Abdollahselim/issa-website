@@ -39,7 +39,7 @@ export default function HeroMetrics() {
   return (
     <div
       dir={isArabic ? "rtl" : "ltr"}
-      className="grid grid-cols-3 items-start gap-1 sm:gap-4 md:gap-6 text-center w-full max-w-xl mx-auto px-1 sm:px-0"
+      className="grid grid-cols-3 items-start gap-1 sm:gap-4 md:gap-6 text-center w-full max-w-xl mx-auto px-6 sm:px-0"
     >
       {heroMetrics.map(({ label, value, icon: Icon }) => (
         <div
@@ -55,11 +55,11 @@ export default function HeroMetrics() {
               w-[clamp(2.5rem,6vw,3.25rem)] 
               items-center justify-center
               rounded-full
-              border border-white/40
+              border border-white
               bg-white/[0.12]
               shadow-[inset_0_1px_1px_rgba(255,255,255,0.5),inset_0_-1px_2px_rgba(0,0,0,0.2),0_8px_24px_rgba(0,0,0,0.18)]
               backdrop-blur-md
-              backdrop-saturate-150
+              backdrop-saturate-140
               shrink-0
             "
           >

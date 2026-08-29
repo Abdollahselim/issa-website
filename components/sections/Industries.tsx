@@ -1,7 +1,6 @@
 "use client";
 
 import { useLanguage } from "@/lib/language-context";
-import HeroMetrics from "@/components/sections/HeroMetrics";
 
 const pillStyles = [
   "border-accent-orange/30 bg-accent-orange/15 text-accent-orange",
@@ -75,14 +74,6 @@ export default function Industries() {
             ))}
           </div>
         </div>
-      </div>
-
-      {/* =========================================================
-          MOBILE HERO METRICS
-          Appears only below Industries on mobile.
-      ========================================================= */}
-      <div className="mt-8 px-5 sm:hidden">
-        <HeroMetrics />
       </div>
 
       {/* =========================================================

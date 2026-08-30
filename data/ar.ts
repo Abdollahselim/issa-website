@@ -42,9 +42,9 @@ export const content: SiteContent = {
 export const industries: Industry[] = [
   { ar: "المراكز الطبية والعيادات", en: "Medical Centers & Clinics" },
   { ar: "الحجامة والعلاج الطبيعي", en: "Cupping & Physiotherapy" },
-  { ar: "التجميل والعناية", en: "Beauty & Skincare" },
   { ar: "النظارات والعدسات", en: "Optics & Lenses" },
-  { ar: "الخدمات المهنية للشركات", en: "Professional B2B Services" },
   { ar: "شركات المحاماة", en: "Law Firms" },
+  { ar: "الخدمات المهنية للشركات", en: "Professional B2B Services" },
+  { ar: "التجميل والعناية", en: "Beauty & Skincare" },
   { ar: "التجارة الإلكترونية", en: "E-commerce" },
 ];

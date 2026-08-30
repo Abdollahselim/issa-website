@@ -27,7 +27,9 @@ export default function Home() {
         <PlatformsMarquee />
 
         {/* Common Sections */}
-        <Industries />
+        <div className="bg-[linear-gradient(to_bottom,rgba(0,0,0,1)_0%,rgba(0,0,0,0.94)_28%,rgba(0,0,0,0.72)_58%,rgba(0,0,0,0)_100%)]">
+          <Industries />
+        </div>
 
         {/* HeroMetrics — Mobile + Tablet only (Desktop inside Hero) */}
         <div className="mt-10 lg:hidden">

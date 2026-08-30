@@ -20,9 +20,12 @@ export interface CaseStudy {
   id: string;
   category: string;
   categoryEn: string;
-  title: string;
-  problem: string;
-  solution: string;
+  titleAr: string;
+  titleEn: string;
+  problemAr: string;
+  problemEn: string;
+  solutionAr: string;
+  solutionEn: string;
   results: CaseStudyResult[];
 }
 

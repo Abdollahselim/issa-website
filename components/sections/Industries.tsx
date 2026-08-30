@@ -37,12 +37,12 @@ export default function Industries() {
   return (
     <section
       id="industries"
-      className="relative isolate overflow-hidden px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24"
+      className="relative isolate overflow-hidden px-4 py-2 sm:px-10 sm:py-5 lg:px-8 lg:py-20"
     >
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_75%_80%,rgba(139,104,47,0.2),transparent_35%),radial-gradient(ellipse_at_25%_50%,rgba(16,91,102,0.15),transparent_38%),linear-gradient(180deg,rgba(0,0,0,10),rgba(4,13,18,0),rgba(0,0,0,0))]" />
 
       <div className="mx-auto max-w-6xl">
-        <h2 className="mx-auto mb-10 max-w-4xl text-center text-balance text-[clamp(2.25rem,5vw,3.75rem)] font-bold tracking-[-0.04em] text-[#e7e9e7] drop-shadow-[0_3px_14px_rgba(255,255,255,0.18)] sm:mb-14">
+        <h2 className="mx-auto mb-10 max-w-4xl text-center text-balance text-[clamp(2.50rem,5.25vw,45rem)] font-bold tracking-[-0.02em] text-[#e7e9e7] drop-shadow-[0_3px_14px_rgba(255,255,255,0.18)] sm:mb-14">
             {t.about.industriesHeading}
         </h2>
 
@@ -55,13 +55,13 @@ export default function Industries() {
               <article
                 key={label || index}
                 className={[
-                  "group flex min-h-24 items-center justify-between gap-4 rounded-2xl",
+                  "group flex min-h-16 items-center justify-between gap-4 rounded-2xl",
                   "border border-r-2 border-t-2 border-b-2",
                   isRTL ? "border-r-[10px]" : "border-l-[10px]",
                   "px-5 py-4 text-lg font-medium leading-tight",
                   "shadow-[inset_0_1px_rgba(255,255,255,0.08),0_8px_20px_rgba(0,0,0,0.3)] backdrop-blur-md",
                   "transition-all duration-300 hover:-translate-y-1 hover:shadow-[inset_0_1px_rgba(255,255,255,0.12),0_12px_28px_rgba(0,0,0,0.4)]",
-                  "sm:min-h-28 sm:px-7 sm:text-xl lg:px-7",
+                  "sm:min-h-18 sm:px-7 sm:text-xl lg:px-7",
                   toneClass.text,
                   toneClass.border,
                   placement,
@@ -79,9 +79,9 @@ export default function Industries() {
                   width={48}
                   height={48}
                   className={[
-                    "h-12 w-12 shrink-0 object-contain opacity-80 transition-all duration-300",
+                    "h-10 w-10 shrink-0 object-contain opacity-80 transition-all duration-300",
                     "group-hover:scale-110 group-hover:opacity-100",
-                    "sm:h-14 sm:w-14",
+                    "sm:h-12 sm:w-12",
                     isRTL ? "order-first" : "",
                   ].join(" ")}
                 />

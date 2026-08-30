@@ -1,25 +1,28 @@
 import { TrendingUp } from "lucide-react";
-import { CaseStudy } from "@/data/types";
+import { CaseStudy, Language } from "@/data/types";
 import MetricCard from "@/components/ui/MetricCard";
 
 interface CaseStudyCardProps {
   caseStudy: CaseStudy;
+  language: Language;
   problemLabel: string;
   achievementLabel: string;
 }
 
 export default function CaseStudyCard({
   caseStudy,
+  language,
   problemLabel,
   achievementLabel,
 }: CaseStudyCardProps) {
+  const isEn = language === "en";
   return (
     <div className="glass-card animate-fade-up rounded-[2rem] p-6 sm:p-9">
       <span className="rounded-full bg-accent-coral/20 px-3 py-1 text-xs font-bold text-accent-orange">
-        {caseStudy.category}
+        {isEn ? caseStudy.categoryEn : caseStudy.category}
       </span>
       <h3 className="mt-4 text-2xl font-extrabold text-text-primary sm:text-3xl">
-        {caseStudy.title}
+        {isEn ? caseStudy.titleEn : caseStudy.titleAr}
       </h3>
 
       <div className="mt-5 space-y-4 text-sm leading-relaxed text-text-primary/85 sm:text-base">
@@ -27,13 +30,13 @@ export default function CaseStudyCard({
           <p className="mb-1 text-xs font-bold uppercase tracking-wide text-text-muted">
             {problemLabel}
           </p>
-          <p>{caseStudy.problem}</p>
+          <p>{isEn ? caseStudy.problemEn : caseStudy.problemAr}</p>
         </div>
         <div>
           <p className="mb-1 text-xs font-bold uppercase tracking-wide text-text-muted">
             {achievementLabel}
           </p>
-          <p>{caseStudy.solution}</p>
+          <p>{isEn ? caseStudy.solutionEn : caseStudy.solutionAr}</p>
         </div>
       </div>
 

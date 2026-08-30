@@ -2,14 +2,17 @@
 
 import { useState } from "react";
 import { useLanguage } from "@/lib/language-context";
-import { caseStudies, caseStudyCategories } from "@/data/case-studies";
+import { caseStudies, getCaseStudyCategories } from "@/data/case-studies";
 import CaseStudyCard from "@/components/ui/CaseStudyCard";
 
 export default function CaseStudies() {
   const { t, language } = useLanguage();
-  const [activeCategory, setActiveCategory] = useState(caseStudyCategories[0]);
+  const categories = getCaseStudyCategories(language);
+  const [activeCategory, setActiveCategory] = useState(categories[0]);
 
-  const filtered = caseStudies.filter((c) => c.category === activeCategory);
+  const filtered = caseStudies.filter((c) =>
+    (language == "en" ? c.categoryEn : c.category) === activeCategory
+);
 
   const problemLabel = language === "ar" ? "المشكلة" : "The Problem";
   const achievementLabel = language === "ar" ? "ما تم تحقيقه" : "What Was Achieved";
@@ -21,7 +24,7 @@ export default function CaseStudies() {
       </h2>
 
       <div className="mx-auto mb-10 flex max-w-3xl flex-wrap justify-center gap-2">
-        {caseStudyCategories.map((cat) => (
+        {categories.map((cat) => (
           <button
             key={cat}
             onClick={() => setActiveCategory(cat)}
@@ -41,6 +44,7 @@ export default function CaseStudies() {
           <CaseStudyCard
             key={cs.id}
             caseStudy={cs}
+            language={language}
             problemLabel={problemLabel}
             achievementLabel={achievementLabel}
           />

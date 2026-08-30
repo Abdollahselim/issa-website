@@ -1,7 +1,8 @@
 // Single source of truth for the WhatsApp number.
-// Replace NEXT_PUBLIC_WHATSAPP_NUMBER in .env.local with the real number
-// (international format, no "+", e.g. 966501234567).
-const FALLBACK_NUMBER = "966544070259"; // placeholder — replace with real number
+// Real number is via NEXT_PUBLIC_WHATSAPP_NUMBER in Vercel env vars.
+// This fallback matches the confirmed real number, kept only as a sarety net.
+
+const FALLBACK_NUMBER = "966544070259";
 
 export function getWhatsAppNumber(): string {
   return process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || FALLBACK_NUMBER;

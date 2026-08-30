@@ -15,7 +15,6 @@ interface HeroMetric {
 
 export default function HeroMetrics() {
   const { language } = useLanguage();
-
   const isArabic = language === "ar";
 
   const heroMetrics: HeroMetric[] = [
@@ -39,35 +38,36 @@ export default function HeroMetrics() {
   return (
     <div
       dir={isArabic ? "rtl" : "ltr"}
-      className="grid grid-cols-3 items-start gap-1 sm:gap-4 md:gap-6 text-center w-full max-w-xl mx-auto px-6 sm:px-0"
+      className="grid w-full grid-cols-3 items-start gap-[clamp(0.5rem,2vw,1.5rem)] text-center"
     >
       {heroMetrics.map(({ label, value, icon: Icon }) => (
         <div
           key={`${label}-${value}`}
           className="flex min-w-0 flex-col items-center text-white"
         >
-          {/* دائرة الأيقونة متجاوبة */}
+          {/* Icon circle */}
           <div
             className="
-              mb-1.5 sm:mb-2.5
-              flex 
-              h-[clamp(2.5rem,6vw,3.25rem)] 
-              w-[clamp(2.5rem,6vw,3.25rem)] 
-              items-center justify-center
+              mb-[clamp(0.375rem,1.5vw,0.625rem)]
+              flex
+              h-[clamp(2.5rem,6vw,3.25rem)]
+              w-[clamp(2.5rem,6vw,3.25rem)]
+              shrink-0
+              items-center
+              justify-center
               rounded-full
-              border border-white
+              border
+              border-white
               bg-white/[0.12]
               shadow-[inset_0_1px_1px_rgba(255,255,255,0.5),inset_0_-1px_2px_rgba(0,0,0,0.2),0_8px_24px_rgba(0,0,0,0.18)]
               backdrop-blur-md
               backdrop-saturate-140
-              shrink-0
             "
           >
-            {/* حجم الأيقونة متجاوب */}
             <Icon
               className="
-                h-[clamp(1.25rem,3.2vw,1.75rem)] 
-                w-[clamp(1.25rem,3.2vw,1.75rem)] 
+                h-[clamp(1.25rem,3.2vw,1.75rem)]
+                w-[clamp(1.25rem,3.2vw,1.75rem)]
                 drop-shadow-[0_2px_4px_rgba(0,0,0,0.25)]
               "
               strokeWidth={1.5}
@@ -75,30 +75,28 @@ export default function HeroMetrics() {
             />
           </div>
 
-          {/* العنوان الرئيسي: حجم متجاوب ومتناسب مع العربي والإنجليزي */}
-          <span 
+          {/* Label */}
+          <span
             className="
-              text-[clamp(0.8125rem,2vw,1.0625rem)] 
-              font-bold 
-              leading-snug 
-              tracking-tight 
-              w-full 
-              truncate sm:whitespace-normal
+              w-full
+              text-[clamp(0.8125rem,2vw,1.0625rem)]
+              font-bold
+              leading-snug
+              tracking-tight
             "
           >
             {label}
           </span>
 
-          {/* النص الفرعي: حجم متجاوب يدعم الأسطر المزدوجة بمرونة */}
-          <span 
+          {/* Value */}
+          <span
             className="
-              mt-0.5 
-              text-[clamp(0.7rem,1.75vw,0.875rem)] 
-              font-medium 
-              leading-tight 
-              text-white/90 
-              w-full 
-              break-words
+              mt-[clamp(0.125rem,0.5vw,0.25rem)]
+              w-full
+              text-[clamp(0.7rem,1.75vw,0.875rem)]
+              font-medium
+              leading-tight
+              text-white/90
             "
           >
             {value}

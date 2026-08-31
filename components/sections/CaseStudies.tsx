@@ -13,9 +13,9 @@ export default function CaseStudies() {
   const [activeCategory, 
     setActiveCategory] = 
     useState(categories[0]);
-  const [prevLanguage, setprevLanguage] = useState(language);
+  const [prevLanguage, setPrevLanguage] = useState(language);
     if (language !== prevLanguage){
-      setprevLanguage(language);
+      setPrevLanguage(language);
       setActiveCategory(getCaseStudyCategories(language)[0]);
     }
 

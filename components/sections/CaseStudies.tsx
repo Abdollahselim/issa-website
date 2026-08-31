@@ -7,11 +7,20 @@ import CaseStudyCard from "@/components/ui/CaseStudyCard";
 
 export default function CaseStudies() {
   const { t, language } = useLanguage();
-  const categories = getCaseStudyCategories(language);
-  const [activeCategory, setActiveCategory] = useState(categories[0]);
+
+  const categories = 
+  getCaseStudyCategories(language);
+  const [activeCategory, 
+    setActiveCategory] = 
+    useState(categories[0]);
+  const [prevLanguage, setprevLanguage] = useState(language);
+    if (language !== prevLanguage){
+      setprevLanguage(language);
+      setActiveCategory(getCaseStudyCategories(language)[0]);
+    }
 
   const filtered = caseStudies.filter((c) =>
-    (language == "en" ? c.categoryEn : c.category) === activeCategory
+    (language === "en" ? c.categoryEn : c.category) === activeCategory
 );
 
   const problemLabel = language === "ar" ? "المشكلة" : "The Problem";

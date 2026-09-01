@@ -48,10 +48,10 @@ export default function ServiceCard({ service }: ServiceCardProps) {
         <p
           dir="ltr"
           className="
-            text-[clamp(1.15rem,2.25vw,1.575rem)]
+            text-[clamp(1.25rem,2.25vw,1.575rem)]
             font-extrabold
             leading-tight
-            text-accent-orange
+            text-[#000000]
           "
         >
           {service.titleEn}
@@ -62,7 +62,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
           className={[
             "mt-1.5 font-extrabold leading-[1.3] text-white",
             isArabic
-              ? "text-[clamp(1.2rem,2.6vw,2.2rem)]"
+              ? "text-[clamp(1.25rem,2.7vw,2.25rem)]"
               : "text-[clamp(1rem,2.25vw,2rem)]",
           ].join(" ")}
         >
@@ -93,10 +93,10 @@ export default function ServiceCard({ service }: ServiceCardProps) {
             <li
               key={bullet}
               className={[
-                "font-medium leading-[1.2] text-white",
+                "font-medium leading-[2] text-white",
                 isArabic
-                  ? "text-[clamp(1.25rem,1.5vw,1.25rem)]"
-                  : "text-[clamp(1rem,1.4vw,1rem)]",
+                  ? "text-[clamp(1rem,1.25vw,1rem)]"
+                  : "text-[clamp(0.850rem,1vw,0.850rem)]",
               ].join(" ")}
             >
               • {bullet}
@@ -104,18 +104,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
           ))}
         </ul>
 
-        {closing && (
-          <p
-            className={[
-              "mt-6 shrink-0 border-t border-white/20 pt-6 text-center font-semibold leading-[1.4] text-accent-orange",
-              isArabic
-                ? "text-[clamp(1rem,1.5vw,1rem)]"
-                : "text-[clamp(0.6875rem,1.2vw,0.8125rem)]",
-            ].join(" ")}
-          >
-            {closing}
-          </p>
-        )}
+        
       </div>
 
       {/* CTA */}

@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useLanguage } from "@/lib/language-context";
 import { services } from "@/data/services";
@@ -207,13 +207,6 @@ export default function Services() {
             aria-label="Previous service"
             className="absolute -left-3 top-1/2 z-30 -translate-y-1/2 text-white transition-transform active:scale-90"
           >
-            <Image
-              src="/icons/left-arrow.svg"
-              alt=""
-              width={40}
-              height={40}
-              className="h-10 w-10 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
-            />
           </button>
 
           <div
@@ -231,13 +224,6 @@ export default function Services() {
             aria-label="Next service"
             className="absolute -right-3 top-1/2 z-30 -translate-y-1/2 text-white transition-transform active:scale-90"
           >
-            <Image
-              src="/icons/right-arrow.svg"
-              alt=""
-              width={40}
-              height={40}
-              className="h-10 w-10 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
-            />
           </button>
         </div>
 
@@ -275,13 +261,6 @@ export default function Services() {
             aria-label="Previous services"
             className="shrink-0 text-white transition-transform hover:scale-105 active:scale-90"
           >
-            <Image
-              src="/icons/left-arrow.svg"
-              alt=""
-              width={44}
-              height={44}
-              className="h-12 w-12 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
-            />
           </button>
 
           <div
@@ -305,13 +284,6 @@ export default function Services() {
             aria-label="Next services"
             className="shrink-0 text-white transition-transform hover:scale-105 active:scale-90"
           >
-            <Image
-              src="/icons/right-arrow.svg"
-              alt=""
-              width={44}
-              height={44}
-              className="h-12 w-12 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
-            />
           </button>
         </div>
 

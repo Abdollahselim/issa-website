@@ -38,9 +38,9 @@ export default function Home() {
         </div>
 
         {/* Services Section */}
-        <section className="">
-          <Services />
-        </section>
+        
+        <Services />
+       
 
         {/* Custom Shape Divider */}
         <ServicesToCaseDivider fillColor="fill-black" />

@@ -197,7 +197,7 @@ export default function Services() {
       {/* MOBILE — 1 CARD */}
       <div className="sm:hidden">
         <div
-          className="relative mx-auto flex w-full max-w-[360px] items-center justify-center"
+          className="relative mx-auto flex w-full max-w-[440px] items-center justify-center px-3"
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
         >
@@ -205,20 +205,20 @@ export default function Services() {
             type="button"
             onClick={handleBackward}
             aria-label="Previous service"
-            className="absolute -left-4 top-1/2 z-20 -translate-y-1/2 text-white transition-transform active:scale-90"
+            className="absolute -left-3 top-1/2 z-30 -translate-y-1/2 text-white transition-transform active:scale-90"
           >
             <Image
               src="/icons/left-arrow.svg"
               alt=""
-              width={44}
-              height={44}
-              className="h-8 w-8 object-contain"
+              width={40}
+              height={40}
+              className="h-10 w-10 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
             />
           </button>
 
           <div
             key={mobileGroup[0]?.id}
-            className="w-[276px] shrink-0 animate-fade-up"
+            className="w-full shrink-0 animate-fade-up"
           >
             {mobileGroup[0] && (
               <ServiceCard service={mobileGroup[0]} />
@@ -229,14 +229,14 @@ export default function Services() {
             type="button"
             onClick={handleForward}
             aria-label="Next service"
-            className="absolute -right-4 top-1/2 z-20 -translate-y-1/2 text-white transition-transform active:scale-90"
+            className="absolute -right-3 top-1/2 z-30 -translate-y-1/2 text-white transition-transform active:scale-90"
           >
             <Image
               src="/icons/right-arrow.svg"
               alt=""
-              width={44}
-              height={44}
-              className="h-8 w-8 object-contain"
+              width={40}
+              height={40}
+              className="h-10 w-10 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
             />
           </button>
         </div>
@@ -278,9 +278,9 @@ export default function Services() {
             <Image
               src="/icons/left-arrow.svg"
               alt=""
-              width={40}
-              height={40}
-              className="h-12 w-12 object-contain"
+              width={44}
+              height={44}
+              className="h-12 w-12 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
             />
           </button>
 
@@ -308,9 +308,9 @@ export default function Services() {
             <Image
               src="/icons/right-arrow.svg"
               alt=""
-              width={40}
-              height={40}
-              className="h-12 w-12 object-contain"
+              width={44}
+              height={44}
+              className="h-12 w-12 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
             />
           </button>
         </div>

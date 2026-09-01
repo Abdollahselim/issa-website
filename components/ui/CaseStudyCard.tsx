@@ -15,25 +15,67 @@ export default function CaseStudyCard({
   problemLabel,
   achievementLabel,
 }: CaseStudyCardProps) {
-  const isEn = language === "en";
+  const isArabic = language === "ar";
+  const isEn = !isArabic;
+
   return (
-    <div className="glass-card animate-fade-up rounded-[2rem] p-6 sm:p-9">
-      <span className="rounded-full bg-accent-coral/20 px-3 py-1 text-xs font-bold text-accent-orange">
+    <div
+      dir={isEn ? "ltr" : "rtl"}
+      className="glass-card animate-fade-up rounded-[2rem] p-6 sm:p-9"
+    >
+      <span
+        className={[
+          "rounded-full bg-accent-coral/20 font-bold text-accent-orange",
+          isArabic
+            ? "px-4 py-1.5 text-[clamp(0.875rem,1.5vw,1.125rem)]"
+            : "px-3 py-1 text-xs",
+        ].join(" ")}
+      >
         {isEn ? caseStudy.categoryEn : caseStudy.category}
       </span>
-      <h3 className="mt-4 text-2xl font-extrabold text-text-primary sm:text-3xl">
+
+      <h3
+        className={[
+          "mt-4 font-extrabold text-text-primary",
+          isArabic
+            ? "text-[clamp(2.5rem,3.5vw,2.5rem)]"
+            : "text-[clamp(2.25rem,3vw,2rem)]",
+        ].join(" ")}
+      >
         {isEn ? caseStudy.titleEn : caseStudy.titleAr}
       </h3>
 
-      <div className="mt-5 space-y-4 text-sm leading-relaxed text-text-primary/85 sm:text-base">
+      <div
+        className={[
+          "mt-5 space-y-4 leading-relaxed text-text-primary/85",
+          isArabic
+            ? "text-[clamp(1.1rem,1.8vw,1.25rem)]"
+            : "text-sm sm:text-base",
+        ].join(" ")}
+      >
         <div>
-          <p className="mb-1 text-xs font-bold uppercase tracking-wide text-text-muted">
+          <p
+            className={[
+              "mb-1 font-bold uppercase tracking-wide text-text-muted",
+              isArabic
+                ? "text-[clamp(1.2rem,1.5vw,1.125rem)]"
+                : "text-xs",
+            ].join(" ")}
+          >
             {problemLabel}
           </p>
           <p>{isEn ? caseStudy.problemEn : caseStudy.problemAr}</p>
         </div>
+
         <div>
-          <p className="mb-1 text-xs font-bold uppercase tracking-wide text-text-muted">
+          <p
+            className={[
+              "mb-1 font-bold uppercase tracking-wide text-text-muted",
+              isArabic
+                ? "text-[clamp(1.2rem,1.5vw,1.125rem)]"
+                : "text-xs",
+            ].join(" ")}
+          >
             {achievementLabel}
           </p>
           <p>{isEn ? caseStudy.solutionEn : caseStudy.solutionAr}</p>
@@ -49,7 +91,7 @@ export default function CaseStudyCard({
             style={{ height: `${h}%` }}
           />
         ))}
-        <TrendingUp className="ms-2 h-6 w-6 shrink-0 text-accent-orange" />
+        <TrendingUp className="h-6 w-6 shrink-0 text-accent-orange" />
       </div>
 
       <div className="mt-6 grid grid-cols-3 gap-2.5">

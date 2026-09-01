@@ -21,7 +21,7 @@ export const caseStudies: CaseStudy[] = [
     results: [
       { label: "ROAS", value: "5.9X" },
       { label: "CAC", value: "25% أقل" },
-      { label: "Google Rating", value: "4.7" },
+      { label: "Google Rating", value: "4.9" },
     ],
   },
   {
@@ -37,7 +37,7 @@ export const caseStudies: CaseStudy[] = [
     results: [
       { label: "ROAS", value: "—" },
       { label: "CAC", value: "—" },
-      { label: "Google Rating", value: "—" },
+      { label: "Google Rating", value: "4.9" },
     ],
   },
   {
@@ -53,7 +53,7 @@ export const caseStudies: CaseStudy[] = [
     results: [
       { label: "ROAS", value: "—" },
       { label: "CAC", value: "—" },
-      { label: "Google Rating", value: "—" },
+      { label: "Google Rating", value: "4.3" },
     ],
   },
   {

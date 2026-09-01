@@ -8,6 +8,7 @@ import PlatformsMarquee from "@/components/sections/PlatformsMarquee";
 import Industries from "@/components/sections/Industries";
 import HeroMetrics from "@/components/sections/HeroMetrics";
 import CTA from "@/components/sections/CTA";
+import ServicesToCaseDivider from "@/components/ui/ServicesToCaseDivider";
 
 export default function Home() {
   return (
@@ -31,16 +32,29 @@ export default function Home() {
           <Industries />
         </div>
 
-        {/* HeroMetrics — Mobile + Tablet only (Desktop inside Hero) */}
+        {/* HeroMetrics — Mobile + Tablet only */}
         <div className="mt-10 lg:hidden">
           <HeroMetrics />
         </div>
 
-        <Services />
+        {/* Services Section */}
+        <section className="">
+          <Services />
+        </section>
 
-        <CaseStudies />
+        {/* Custom Shape Divider */}
+        <ServicesToCaseDivider fillColor="fill-black" />
+
+        {/* Case Studies Section */}
+        <section className="bg-gradient-to-t
+          from-black/0
+          via-black/50
+          to-black">
+          <CaseStudies />
+        </section>
 
         <CTA />
+
       </main>
 
       <Footer />

@@ -36,7 +36,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
         backdrop-blur-[10px]
 
         sm:min-h-[440px]
-        sm:rounded-[22px]
+        sm:rounded-[18px]
         sm:p-5
 
         lg:min-h-[480px]
@@ -48,7 +48,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
         <p
           dir="ltr"
           className="
-            text-[clamp(1.0625rem,2vw,1.375rem)]
+            text-[clamp(1.15rem,2.25vw,1.575rem)]
             font-extrabold
             leading-tight
             text-accent-orange
@@ -62,8 +62,8 @@ export default function ServiceCard({ service }: ServiceCardProps) {
           className={[
             "mt-1.5 font-extrabold leading-[1.3] text-white",
             isArabic
-              ? "text-[clamp(1.155rem,2.22vw,1.75rem)]"
-              : "text-[clamp(1rem,1.8vw,1.25rem)]",
+              ? "text-[clamp(1.2rem,2.6vw,2.2rem)]"
+              : "text-[clamp(1rem,2.25vw,2rem)]",
           ].join(" ")}
         >
           {service.titleAr}
@@ -95,8 +95,8 @@ export default function ServiceCard({ service }: ServiceCardProps) {
               className={[
                 "font-medium leading-[1.2] text-white",
                 isArabic
-                  ? "text-[clamp(1rem,1.25vw,1rem)]"
-                  : "text-[clamp(0.75rem,1.4vw,0.875rem)]",
+                  ? "text-[clamp(1.25rem,1.5vw,1.25rem)]"
+                  : "text-[clamp(1rem,1.4vw,1rem)]",
               ].join(" ")}
             >
               • {bullet}

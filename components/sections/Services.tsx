@@ -1,7 +1,7 @@
 "use client";
 
+import Image from "next/image";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
 import { services } from "@/data/services";
 import ServiceCard from "@/components/ui/ServiceCard";
@@ -11,7 +11,7 @@ const SWIPE_THRESHOLD = 40;
 
 const MOBILE_SIZE = 1;
 const TABLET_SIZE = 2;
-const DESKTOP_SIZE = 4;
+const DESKTOP_COLUMNS = 3;
 
 function chunkServices(
   items: Service[],
@@ -26,12 +26,26 @@ function chunkServices(
   return groups;
 }
 
+function chunkServicesForDesktop(
+  items: Service[],
+  columns: number,
+): Service[][] {
+  const rows: Service[][] = [];
+  const rowsCount = Math.ceil(items.length / columns);
+
+  for (let rowIndex = 0; rowIndex < rowsCount; rowIndex++) {
+    const start = rowIndex * columns;
+    rows.push(items.slice(start, start + columns));
+  }
+
+  return rows;
+}
+
 export default function Services() {
   const { t, dir } = useLanguage();
 
   const [activeMobile, setActiveMobile] = useState(0);
   const [activeTablet, setActiveTablet] = useState(0);
-  const [activeDesktop, setActiveDesktop] = useState(0);
 
   const touchStartX = useRef<number | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
@@ -46,8 +60,8 @@ export default function Services() {
     [],
   );
 
-  const desktopGroups = useMemo(
-    () => chunkServices(services, DESKTOP_SIZE),
+  const desktopRows = useMemo(
+    () => chunkServicesForDesktop(services, DESKTOP_COLUMNS),
     [],
   );
 
@@ -71,14 +85,12 @@ export default function Services() {
   const goNext = useCallback(() => {
     move("next", setActiveMobile, mobileGroups.length);
     move("next", setActiveTablet, tabletGroups.length);
-    move("next", setActiveDesktop, desktopGroups.length);
-  }, [move, mobileGroups.length, tabletGroups.length, desktopGroups.length]);
+  }, [move, mobileGroups.length, tabletGroups.length]);
 
   const goPrev = useCallback(() => {
     move("prev", setActiveMobile, mobileGroups.length);
     move("prev", setActiveTablet, tabletGroups.length);
-    move("prev", setActiveDesktop, desktopGroups.length);
-  }, [move, mobileGroups.length, tabletGroups.length, desktopGroups.length]);
+  }, [move, mobileGroups.length, tabletGroups.length]);
 
   const handleForward = dir === "rtl" ? goPrev : goNext;
   const handleBackward = dir === "rtl" ? goNext : goPrev;
@@ -138,7 +150,6 @@ export default function Services() {
 
   const mobileGroup = mobileGroups[activeMobile] ?? [];
   const tabletGroup = tabletGroups[activeTablet] ?? [];
-  const desktopGroup = desktopGroups[activeDesktop] ?? [];
 
   return (
     <section
@@ -169,25 +180,21 @@ export default function Services() {
         className="
           mb-9
           text-center
-          text-[62px]
+          text-[clamp(2.5rem,8vw,5.5rem)]
           font-black
           leading-none
           tracking-[-0.04em]
           text-white
 
           sm:mb-12
-          sm:text-7xl
 
           lg:mb-14
-          lg:text-[88px]
         "
       >
         {t.services.heading}
       </h2>
 
-      {/* =========================================================
-          MOBILE — 1 CARD
-      ========================================================= */}
+      {/* MOBILE — 1 CARD */}
       <div className="sm:hidden">
         <div
           className="relative mx-auto flex w-full max-w-[360px] items-center justify-center"
@@ -198,30 +205,20 @@ export default function Services() {
             type="button"
             onClick={handleBackward}
             aria-label="Previous service"
-            className="
-              absolute
-              -left-1
-              top-1/2
-              z-20
-              -translate-y-1/2
-              text-white
-              transition-transform
-              active:scale-90
-            "
+            className="absolute -left-4 top-1/2 z-20 -translate-y-1/2 text-white transition-transform active:scale-90"
           >
-            <ChevronLeft
-              className="h-11 w-11"
-              strokeWidth={1.8}
+            <Image
+              src="/icons/left-arrow.svg"
+              alt=""
+              width={44}
+              height={44}
+              className="h-8 w-8 object-contain"
             />
           </button>
 
           <div
             key={mobileGroup[0]?.id}
-            className="
-              w-[276px]
-              shrink-0
-              animate-fade-up
-            "
+            className="w-[276px] shrink-0 animate-fade-up"
           >
             {mobileGroup[0] && (
               <ServiceCard service={mobileGroup[0]} />
@@ -232,20 +229,14 @@ export default function Services() {
             type="button"
             onClick={handleForward}
             aria-label="Next service"
-            className="
-              absolute
-              -right-1
-              top-1/2
-              z-20
-              -translate-y-1/2
-              text-white
-              transition-transform
-              active:scale-90
-            "
+            className="absolute -right-4 top-1/2 z-20 -translate-y-1/2 text-white transition-transform active:scale-90"
           >
-            <ChevronRight
-              className="h-11 w-11"
-              strokeWidth={1.8}
+            <Image
+              src="/icons/right-arrow.svg"
+              alt=""
+              width={44}
+              height={44}
+              className="h-8 w-8 object-contain"
             />
           </button>
         </div>
@@ -275,28 +266,26 @@ export default function Services() {
         </div>
       </div>
 
-      {/* =========================================================
-          TABLET — 2 CARDS
-      ========================================================= */}
+      {/* TABLET — 2 CARDS */}
       <div className="hidden sm:block lg:hidden">
         <div className="mx-auto flex max-w-[760px] items-center gap-4">
           <button
             type="button"
             onClick={handleBackward}
             aria-label="Previous services"
-            className="
-              shrink-0
-              text-white
-              transition-transform
-              hover:scale-105
-              active:scale-90
-            "
+            className="shrink-0 text-white transition-transform hover:scale-105 active:scale-90"
           >
-            <ChevronLeft className="h-10 w-10" />
+            <Image
+              src="/icons/left-arrow.svg"
+              alt=""
+              width={40}
+              height={40}
+              className="h-12 w-12 object-contain"
+            />
           </button>
 
           <div
-            className="grid min-w-0 flex-1 grid-cols-2 gap-4"
+            className="grid min-w-0 flex-3 grid-cols-2 gap-4"
             onTouchStart={onTouchStart}
             onTouchEnd={onTouchEnd}
           >
@@ -314,20 +303,20 @@ export default function Services() {
             type="button"
             onClick={handleForward}
             aria-label="Next services"
-            className="
-              shrink-0
-              text-white
-              transition-transform
-              hover:scale-105
-              active:scale-90
-            "
+            className="shrink-0 text-white transition-transform hover:scale-105 active:scale-90"
           >
-            <ChevronRight className="h-10 w-10" />
+            <Image
+              src="/icons/right-arrow.svg"
+              alt=""
+              width={40}
+              height={40}
+              className="h-12 w-12 object-contain"
+            />
           </button>
         </div>
 
         {/* Tablet dots */}
-        <div className="mt-7 flex justify-center gap-1.5">
+        <div className="mt-7 flex justify-center gap-2.5">
           {tabletGroups.map((group, index) => (
             <button
               key={group[0]?.id ?? index}
@@ -342,7 +331,7 @@ export default function Services() {
                 duration-300
                 ${
                   index === activeTablet
-                    ? "w-6 bg-accent-orange"
+                    ? "w-10 bg-accent-orange"
                     : "w-1.5 bg-white/30"
                 }
               `}
@@ -351,76 +340,23 @@ export default function Services() {
         </div>
       </div>
 
-      {/* =========================================================
-          DESKTOP — 4 CARDS
-      ========================================================= */}
+      {/* DESKTOP — ALL SERVICES IN 3 ROWS */}
       <div className="hidden lg:block">
-        <div className="mx-auto flex w-full max-w-[1440px] items-center gap-6">
-          <button
-            type="button"
-            onClick={handleBackward}
-            aria-label="Previous services"
-            className="
-              shrink-0
-              text-white
-              transition-transform
-              hover:scale-105
-              active:scale-90
-            "
-          >
-            <ChevronLeft className="h-12 w-12" />
-          </button>
-
-          <div
-            className="grid min-w-0 flex-1 grid-cols-4 gap-5"
-          >
-            {desktopGroup.map((service) => (
-              <div
-                key={service.id}
-                className="min-w-0 animate-fade-up"
-              >
-                <ServiceCard service={service} />
-              </div>
-            ))}
-          </div>
-
-          <button
-            type="button"
-            onClick={handleForward}
-            aria-label="Next services"
-            className="
-              shrink-0
-              text-white
-              transition-transform
-              hover:scale-105
-              active:scale-90
-            "
-          >
-            <ChevronRight className="h-12 w-12" />
-          </button>
-        </div>
-
-        {/* Desktop dots */}
-        <div className="mt-8 flex justify-center gap-1.5">
-          {desktopGroups.map((group, index) => (
-            <button
-              key={group[0]?.id ?? index}
-              type="button"
-              onClick={() => setActiveDesktop(index)}
-              aria-label={`${t.services.heading} ${index + 1}`}
-              aria-current={index === activeDesktop}
-              className={`
-                h-1.5
-                rounded-full
-                transition-all
-                duration-300
-                ${
-                  index === activeDesktop
-                    ? "w-6 bg-accent-orange"
-                    : "w-1.5 bg-white/30"
-                }
-              `}
-            />
+        <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-6">
+          {desktopRows.map((row, rowIndex) => (
+            <div
+              key={rowIndex}
+              className="grid grid-cols-3 gap-5"
+            >
+              {row.map((service) => (
+                <div
+                  key={service.id}
+                  className="min-w-0 animate-fade-up"
+                >
+                  <ServiceCard service={service} />
+                </div>
+              ))}
+            </div>
           ))}
         </div>
       </div>

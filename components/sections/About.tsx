@@ -77,7 +77,7 @@ export default function About() {
               min-w-[clamp(8.75rem,12vw,10rem)]
               justify-center
               border
-              border-white/100
+              border-white
               bg-gradient-to-r
               from-white/30
               via-white/20

@@ -12,46 +12,46 @@ interface ServiceCardProps {
 export default function ServiceCard({ service }: ServiceCardProps) {
   const { language, t } = useLanguage();
 
-  const bullets = language === "ar" ? service.bulletsAr : service.bulletsEn;
-  const closing = language === "ar" ? service.closingAr : service.closingEn;
+  const isArabic = language === "ar";
+  const bullets = isArabic ? service.bulletsAr : service.bulletsEn;
+  const closing = isArabic ? service.closingAr : service.closingEn;
 
   return (
     <article
+      dir={isArabic ? "rtl" : "ltr"}
       className="
         flex
-        h-[402px]
+        h-full
+        min-h-[380px]
         w-full
         flex-col
         overflow-hidden
-        rounded-[22px]
+        rounded-[18px]
         border
         border-white/25
-        bg-white/[0.20]
+        bg-black/30
         p-4
         text-white
         shadow-[0_18px_45px_rgba(0,0,0,0.22)]
         backdrop-blur-[10px]
 
-        sm:h-[500px]
-        sm:rounded-[26px]
+        sm:min-h-[440px]
+        sm:rounded-[22px]
         sm:p-5
 
-        lg:h-[520px]
+        lg:min-h-[480px]
         lg:p-6
       "
     >
-      {/* Titles — always both languages */}
+      {/* Titles */}
       <div className="shrink-0 text-center">
         <p
           dir="ltr"
           className="
-            text-[19px]
+            text-[clamp(1.0625rem,2vw,1.375rem)]
             font-extrabold
             leading-tight
             text-accent-orange
-
-            sm:text-[21px]
-            lg:text-[22px]
           "
         >
           {service.titleEn}
@@ -59,38 +59,19 @@ export default function ServiceCard({ service }: ServiceCardProps) {
 
         <h3
           dir="rtl"
-          className="
-            mt-1
-            line-clamp-2
-            text-[18px]
-            font-extrabold
-            leading-[1.25]
-            text-white
-
-            sm:text-[20px]
-            lg:text-[21px]
-          "
+          className={[
+            "mt-1.5 font-extrabold leading-[1.3] text-white",
+            isArabic
+              ? "text-[clamp(1.155rem,2.22vw,1.75rem)]"
+              : "text-[clamp(1rem,1.8vw,1.25rem)]",
+          ].join(" ")}
         >
           {service.titleAr}
         </h3>
       </div>
 
       {/* Service image */}
-      <div
-        className="
-          relative
-          mx-auto
-          mt-3
-          h-[118px]
-          w-full
-          shrink-0
-
-          sm:mt-4
-          sm:h-[160px]
-
-          lg:h-[175px]
-        "
-      >
+      <div className="relative mx-auto mt-4 h-[clamp(100px,14vw,150px)] w-full shrink-0">
         <Image
           src={service.image}
           alt=""
@@ -106,51 +87,17 @@ export default function ServiceCard({ service }: ServiceCardProps) {
       </div>
 
       {/* Content */}
-      <div
-        dir={language === "ar" ? "rtl" : "ltr"}
-        className="
-          mt-2
-          flex
-          min-h-0
-          flex-1
-          flex-col
-          overflow-hidden
-          rounded-[4px]
-          border
-          border-white/20
-          bg-white/[0.18]
-          px-3
-          py-2.5
-
-          sm:mt-3
-          sm:px-4
-          sm:py-3
-        "
-      >
-        <ul
-          className="
-            flex
-            min-h-0
-            flex-1
-            flex-col
-            justify-center
-            gap-1.5
-            overflow-hidden
-          "
-        >
+      <div className="mt-4 flex min-h-0 flex-1 flex-col rounded-xl border border-white/20 bg-black/20 px-3.5 py-3 sm:px-4 sm:py-3.5">
+        <ul className="flex min-h-0 flex-1 flex-col justify-center gap-2 text-center">
           {bullets.map((bullet) => (
             <li
               key={bullet}
-              className="
-                text-center
-                text-[8.5px]
-                font-medium
-                leading-[1.45]
-                text-black/75
-
-                sm:text-[11px]
-                lg:text-[12px]
-              "
+              className={[
+                "font-medium leading-[1.2] text-white",
+                isArabic
+                  ? "text-[clamp(1rem,1.25vw,1rem)]"
+                  : "text-[clamp(0.75rem,1.4vw,0.875rem)]",
+              ].join(" ")}
             >
               • {bullet}
             </li>
@@ -159,21 +106,12 @@ export default function ServiceCard({ service }: ServiceCardProps) {
 
         {closing && (
           <p
-            className="
-              mt-1.5
-              shrink-0
-              border-t
-              border-black/10
-              pt-1.5
-              text-center
-              text-[8px]
-              font-semibold
-              leading-[1.35]
-              text-black/80
-
-              sm:text-[10px]
-              lg:text-[11px]
-            "
+            className={[
+              "mt-6 shrink-0 border-t border-white/20 pt-6 text-center font-semibold leading-[1.4] text-accent-orange",
+              isArabic
+                ? "text-[clamp(1rem,1.5vw,1rem)]"
+                : "text-[clamp(0.6875rem,1.2vw,0.8125rem)]",
+            ].join(" ")}
           >
             {closing}
           </p>
@@ -181,26 +119,16 @@ export default function ServiceCard({ service }: ServiceCardProps) {
       </div>
 
       {/* CTA */}
-      <div className="flex shrink-0 justify-center pt-2.5 sm:pt-4">
+      <div className="flex shrink-0 justify-center pt-6">
         <WhatsAppButton
           label={t.services.ctaLabel}
           variant="full"
-          className="
-            rounded-[9px]
-            border
-            border-black/20
-            bg-white
-            px-5
-            py-2
-            text-[11px]
-            font-extrabold
-            text-black
-            shadow-[0_4px_10px_rgba(0,0,0,0.25)]
-
-            sm:px-6
-            sm:py-2.5
-            sm:text-sm
-          "
+          className={[
+            "rounded-full border border-white bg-gradient-to-r from-white/30 via-white/20 to-[#ef5a35]/90 font-extrabold text-black shadow-[0_4px_10px_rgba(0,0,0,0.25)] transition-transform hover:scale-[1.03] active:scale-95",
+            isArabic
+              ? "px-6 py-2 text-[clamp(1rem,1.75vw,1rem)]"
+              : "px-6 py-2 text-[clamp(1rem,1.74vw,1rem)]",
+          ].join(" ")}
         />
       </div>
     </article>

@@ -54,7 +54,7 @@ export default function Home() {
         </section>
 
         <CTA />
-
+        
       </main>
 
       <Footer />
